@@ -64,9 +64,11 @@ def lambda_handler(event, context):
                     tags.append(tag)
 
     s3_url = "https://{}.s3.amazonaws.com/{}".format(bucket, key)
+    thumbnail_url = "https://{}.s3.amazonaws.com/{}".format(bucket, thumbnail_key)
     table.put_item(
         Item={
             'ImageURL': s3_url,
+            'ThumbnailURL': thumbnail_url,
             'Tags': tags
         }
     )
